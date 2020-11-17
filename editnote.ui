@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>addNote</class>
- <widget class="QDialog" name="addNote">
+ <class>editNote</class>
+ <widget class="QDialog" name="editNote">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>289</height>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>250</y>
+     <x>30</x>
+     <y>260</y>
      <width>341</width>
-     <height>30</height>
+     <height>32</height>
     </rect>
    </property>
    <property name="orientation">
@@ -32,36 +32,18 @@
   <widget class="QLineEdit" name="lineEditTitle">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>30</y>
+     <x>10</x>
+     <y>70</y>
      <width>360</width>
      <height>28</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>110</width>
-     <height>18</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Title</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>80</y>
+     <x>10</x>
+     <y>110</y>
      <width>47</width>
      <height>18</height>
     </rect>
@@ -75,21 +57,11 @@
     <string>Body</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEditBody">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>100</y>
-     <width>360</width>
-     <height>69</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QComboBox" name="comboBoxCategory">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>190</y>
+     <x>10</x>
+     <y>230</y>
      <width>360</width>
      <height>20</height>
     </rect>
@@ -103,11 +75,21 @@
     </property>
    </item>
   </widget>
+  <widget class="QTextEdit" name="textEditBody">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>140</y>
+     <width>360</width>
+     <height>69</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QComboBox" name="comboBoxPriority">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>220</y>
+     <x>10</x>
+     <y>260</y>
      <width>180</width>
      <height>20</height>
     </rect>
@@ -133,13 +115,52 @@
     </property>
    </item>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>110</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Title</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>10</y>
+     <width>120</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Edit Note</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>addNote</receiver>
+   <receiver>editNote</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -155,7 +176,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>addNote</receiver>
+   <receiver>editNote</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

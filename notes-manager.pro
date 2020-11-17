@@ -18,17 +18,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     addnote.cpp \
     database.cpp \
+    editnote.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     addnote.h \
+    category.h \
     database.h \
+    editnote.h \
     mainwindow.h \
-    note.h
+    note.h \
+    priority.h \
+    status.h
 
 FORMS += \
     addnote.ui \
+    editnote.ui \
     mainwindow.ui
 
 # Default rules for deployment.

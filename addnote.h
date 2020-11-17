@@ -3,6 +3,7 @@
 
 #include "note.h"
 #include "database.h"
+#include "priority.h"
 #include <QDialog>
 
 namespace Ui {

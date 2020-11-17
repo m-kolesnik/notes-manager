@@ -38,9 +38,17 @@ Note addNote::getNote(){
     note.body = this->ui->textEditBody->toPlainText().toStdString();
     note.title = this->ui->lineEditTitle->text().toStdString();
     note.date = asctime(currtime);
-    note.category = "";
-    note.priority = 1;
+    note.category = this->ui->comboBoxCategory->currentText().toStdString();
+    note.priority = Priority::DEFAULT;
+
+    if(this->ui->comboBoxPriority->currentText().toStdString() == "low")
+        note.priority = Priority::LOW;
+
+    if(this->ui->comboBoxPriority->currentText().toStdString() == "medium")
+        note.priority = Priority::MEDIUM;
+
+    if(this->ui->comboBoxPriority->currentText().toStdString() == "high")
+        note.priority = Priority::HIGH;
 
     return note;
 }
-
