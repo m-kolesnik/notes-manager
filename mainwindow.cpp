@@ -13,8 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
     this->icon->setIcon(this->style()->standardIcon(QStyle::SP_ComputerIcon));
     this->icon->show();
 
-    RegisterHotKey((HWND)MainWindow::winId(), 100, MOD_ALT | MOD_SHIFT, 'D');
-
     this->database = new Database("C:/Users/nikit/Desktop/hometask/notes-manager/data/data.db");
 
     if(this->database->open()) {
@@ -37,7 +35,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::updateListView(){
+void MainWindow::updateListView()
+{
     QStringListModel* model = new QStringListModel(this);
     QStringList list;
 
@@ -77,10 +76,10 @@ void MainWindow::on_listView_pressed(const QModelIndex &index)
     this->ui->labelPriority->setText(QString::fromStdString(getPriorityText(note)));
 
     if(note.status == 2)
-        this->ui->lineEdit->setStyleSheet("text-decoration: line-through;");
+        this->ui->pushButtonCompleteNote->setDisabled(true);
 
     if(note.status == 1)
-        this->ui->lineEdit->setStyleSheet("");
+        this->ui->pushButtonCompleteNote->setDisabled(false);
 
     this->currentNote = note;
 }
@@ -223,10 +222,64 @@ void MainWindow::on_comboBoxCategory_currentIndexChanged(const QString &arg1)
        return this->updateListView();
 
     if(arg1 == "personal") {
+        std::vector<Note> personalNotes = this->database->getNotesByCategory("personal");
+        QStringListModel* model = new QStringListModel(this);
+        QStringList list;
+
+        std::cerr << "Updating list view: " << personalNotes.size() << " found" << std::endl;
+
+        for (size_t i = 0; i < personalNotes.size(); i++) {
+            list.push_back(QString::fromStdString(personalNotes[i].title));
+        }
+
+        model->setStringList(list);
+        this->ui->listView->setModel(model);
 
     }
 
     if(arg1 == "work") {
+        std::vector<Note> workNotes = this->database->getNotesByCategory("work");
 
+        QStringListModel* model = new QStringListModel(this);
+        QStringList list;
+
+        std::cerr << "Updating list view: " << workNotes.size() << " found" << std::endl;
+
+        for (size_t i = 0; i < workNotes.size(); i++) {
+            list.push_back(QString::fromStdString(workNotes[i].title));
+        }
+
+        model->setStringList(list);
+        this->ui->listView->setModel(model);
     }
+}
+
+void MainWindow::on_pushButtonCompleteNote_clicked()
+{
+    if(this->currentNote.id){
+        Note note = this->database->getNoteByTitle(this->currentNote.title);
+        note.status = Status::RESOLVED;
+
+        this->database->updateNote(note);
+
+        this->ui->pushButtonCompleteNote->setDisabled(true);
+        this->currentNote = note;
+    }
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    std::ofstream data_file;
+    std::vector<Note> notes = this->database->getAllNotes();
+
+    data_file.open("../notes-manager/data/notes_data.txt");
+
+    for (size_t i = 0; i < notes.size(); i++) {
+        if(notes[i].id != 0) {
+            data_file << i << ". " << notes[i].title << " | " << notes[i].body << "|" << notes[i].category << std::endl;
+        }
+    }
+
+    data_file.close();
+    QMessageBox::information(0, "Info", "Successfuly exported to file");
 }

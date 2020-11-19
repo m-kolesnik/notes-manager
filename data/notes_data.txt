@@ -1,0 +1,10 @@
+0. Notes Manager | These are just instructions for using Notes Manager
+
+Select a note to see more details
+Creation date, category, priority, text and title are displayed there.
+
+To delete a note - select it from the list on the left and click on the minus
+
+To add - click on the cross in the upper right corner|
+1. TEST PERSONAL | Personal note with category personal|
+2. TEST WORK  | Work category test|

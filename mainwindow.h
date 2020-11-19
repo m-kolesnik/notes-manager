@@ -5,7 +5,8 @@
 #include "addnote.h"
 #include "editnote.h"
 #include "priority.h"
-#include "windows.h"
+#include <fstream>
+#include <iostream>
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QListView>
@@ -35,6 +36,10 @@ private slots:
     void on_pushButton_3_clicked();
     void on_pushButtonEditNote_clicked();
     void on_comboBoxCategory_currentIndexChanged(const QString &arg1);
+
+    void on_pushButtonCompleteNote_clicked();
+
+    void on_pushButton_4_clicked();
 
 private:
     Note currentNote;

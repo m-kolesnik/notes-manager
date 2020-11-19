@@ -57,24 +57,6 @@
     <string>Body</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBoxCategory">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>230</y>
-     <width>360</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="toolTipDuration">
-    <number>1</number>
-   </property>
-   <item>
-    <property name="text">
-     <string/>
-    </property>
-   </item>
-  </widget>
   <widget class="QTextEdit" name="textEditBody">
    <property name="geometry">
     <rect>
@@ -153,6 +135,34 @@
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxCategory">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>230</y>
+     <width>180</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>1</number>
+   </property>
+   <item>
+    <property name="text">
+     <string>all</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>personal</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>work</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

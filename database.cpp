@@ -110,7 +110,14 @@ std::vector<Note> Database::getAllNotes()
 
 Note Database::updateNote(const Note &note)
 {
-    return note;
+     QSqlQuery query;
+
+     query.prepare("UPDATE notes SET status = :status WHERE id = :id");
+     query.bindValue(":id", note.id);
+     query.bindValue(":status", note.status);
+     query.exec();
+
+     return note;
 }
 
 unsigned int Database::deleteNote(unsigned int id)
@@ -142,3 +149,30 @@ std::vector<Category> Database::getAllCategories()
     return categories;
 }
 
+std::vector<Note> Database::getNotesByCategory(std::string category)
+{
+    std::vector<Note> notes;
+    QSqlQuery query;
+
+    query.prepare("SELECT * FROM notes WHERE category = :category");
+    query.bindValue(":category", QString::fromStdString(category));
+
+
+    if(query.exec())
+    while (query.next()) {
+        Note note;
+        note.id = query.value("id").toUInt();
+        note.title = query.value("title").toString().toStdString();
+        note.body = query.value("body").toString().toStdString();
+        note.category = query.value("category").toString().toStdString();
+        note.date = query.value("date").toString().toStdString();
+        note.priority = query.value("priority").toUInt();
+        note.status = query.value("status").toUInt();
+        notes.push_back(note);
+    }
+    else {
+        std::cerr << query.lastError().text().toStdString();
+    }
+
+    return notes;
+}

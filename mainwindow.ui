@@ -230,6 +230,32 @@
      </property>
     </item>
    </widget>
+   <widget class="QPushButton" name="pushButtonCompleteNote">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>340</y>
+      <width>520</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Complete</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>560</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Export Notes</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
